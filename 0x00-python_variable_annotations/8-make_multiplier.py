@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/bin/env python3
 '''A function that takes a float as an argument and returns a function
 multiplies a float by by multiplier'''
 
