@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/bin/env python3
 
 '''A program that takes in an integers and wait for its delay time'''
 import asyncio
