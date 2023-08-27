@@ -2,7 +2,7 @@
 """Utils testcase"""
 import unittest
 from parameterized import parameterized
-from utils import access_nested_map
+from utils import access_nested_map, get_json, memoize
 
 class TestAccessNestedMap(unittest.TestCase):
     """TestCase of a Nested map"""
@@ -11,14 +11,14 @@ class TestAccessNestedMap(unittest.TestCase):
         ({"a": {"b": 2}}, ("a",), {"b": 2}),
         ({"a": {"b": 2}}, ("a", "b"), 2)
     ])
-    def test_access_nested_map(self, name, expected, path):
+    def test_access_nested_map(self, name, path, expected):
         """Test for the dictionary of the ouput with the expected output"""
         output = access_nested_map(name, path)
         self.assertEqual(output, expected)
 
     @parameterized.expand([
-        ({}, ("a", ), 'a'),
-        ({"a": 1}, ("a", "b"), 'b')
+        ({}, ("a", ), "a"),
+        ({"a": 1}, ("a", "b"), "b")
     ])
     def test_access_nested_map_exception(self, map, path, output):
         """Tests the KeyError """
