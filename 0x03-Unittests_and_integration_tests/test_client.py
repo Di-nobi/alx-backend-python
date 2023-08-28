@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
 """Test Case for the client"""
-
 from client import GithubOrgClient
 import unittest
 from unittest.mock import patch, Mock, PropertyMock, call
@@ -22,3 +21,11 @@ class TestGithubOrgClient(unittest.TestCase):
         MainClient = GithubOrgClient(org)
         self.assertEqual(MainClient.org, expected)
         mock.assert_called_once()
+
+    def test_public_repos_url(self):
+        """Tests the public repo"""
+        expected = "http://test_url"
+        outcome = {"repos_url": expected}
+        with patch("client.GithubOrgClient.org", new_callable=PropertyMock) as mock:
+            mock.return_value = {outcome}
+            self.assertEqual(GithubOrgClient("google")._public_repos_url, expected)
