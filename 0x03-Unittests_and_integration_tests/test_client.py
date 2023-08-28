@@ -16,6 +16,7 @@ class TestGithubOrgClient(unittest.TestCase):
     """Class for testing of the github client"""
 
     def test_org(self, org, expected):
+        """Test for the matching of the org output with he expected result"""
         mock = Mock()
         mock.return_value = expected
         MainClient = GithubOrgClient(org)
