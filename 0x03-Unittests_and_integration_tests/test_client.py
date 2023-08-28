@@ -28,3 +28,12 @@ class TestGithubOrgClient(unittest.TestCase):
         with patch("client.GithubOrgClient.org", new_callable=PropertyMock) as mock:
             mock.return_value = {outcome}
             self.assertEqual(GithubOrgClient("google")._public_repos_url, expected)
+    
+    @parameterized.expand([
+        ({"license": {"key": "my_license"}}, "my_license", True),
+        ({"license": {"key": "other_license"}}, "other_license", False)
+    ])
+    def test_has_license(self, repo, key, expected):
+        """Test the github license"""
+        getlicense = GithubOrgClient.has_license(repo, key)
+        self.assertEqual(getlicense, expected)
