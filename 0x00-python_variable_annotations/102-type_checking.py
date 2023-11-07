@@ -3,6 +3,7 @@
 
 from typing import Tuple, List
 
+
 def zoom_array(lst: Tuple, factor: int = 2) -> List:
     '''Annotation for a List'''
     zoomed_in: List = [
@@ -10,6 +11,7 @@ def zoom_array(lst: Tuple, factor: int = 2) -> List:
         for i in range(int(factor))
     ]
     return zoomed_in
+
 
 array = (12, 72, 91)
 
